@@ -2,11 +2,9 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, ScrollView, Alert, TextInput, KeyboardAvoidingView, Platform, TouchableOpacity, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { FontAwesome5, MaterialIcons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
 
 
 export default function Produtos() {
-    const navigation = useNavigation();
     return (
         <SafeAreaView style={styles.safeArea}>
             <StatusBar style='auto' />
