@@ -1,48 +1,41 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, ScrollView, Pressable, Alert, TextInput, KeyboardAvoidingView, Platform, TouchableOpacity, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { AntDesign, FontAwesome, Foundation, MaterialIcons } from '@expo/vector-icons';
+import { Foundation, MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
-import Contatos from '../Contatos';
-import Produtos from '../Produtos';
 
 export default function Home() {
     const navigation = useNavigation();
     return (
-        <SafeAreaView style={{ flex: 1 }}>
+        <SafeAreaView style={styles.safeArea}>
             <StatusBar style='auto' />
             <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 20}>
+
+
                 <View style={styles.header}>
-                    <Image source={{ uri: 'https://img.icons8.com/stickers/1200/shop--v1.jpg' }} style={styles.imagem} resizeMode='contain'>
-                    </Image>
                     <Text style={styles.textoHeader}>Seja bem vindo(a) a ZabStore!</Text>
-                    {/* A ZabStore é uma loja voltado ao mundo Geek, temos vários artigos de decorações, cartões de presente e acessórios, tudo para deixar o seu game mais rápido. */}
+
+                    <Image source={{ uri: 'https://media.licdn.com/dms/image/v2/C4D0BAQGbY7O7Bt4P6Q/company-logo_200_200/company-logo_200_200/0/1678283713618?e=2147483647&v=beta&t=dXtSRXKiFC3Iab-2oeElJEtdl353jAQxx2TImw7D7oQ' }} style={{ width: '50%', height: 200, borderRadius: 100, marginTop: 20, marginBottom: 15 }} resizeMode='contain'></Image>
+
+                    <Text style={styles.aboutTitle}>Um pouco sobre a gente</Text>
+                    <Text style={styles.aboutText}>  A ZabStore é uma loja voltado ao mundo Geek, temos vários artigos de decorações, cartões de presente e acessórios, tudo para deixar o seu game mais rápido.</Text>
                 </View>
 
 
-                <ScrollView contentContainerStyle={styles.container} keyboardShouldPersistTaps='handled'>
-
-                    {/* <View style={styles.container}> */}
-
-                    <Image source={{ uri: 'https://i.pinimg.com/736x/6f/d4/94/6fd49408af6003bc03a65f8c7b5155d6.jpg' }} style={{ width: '50%', height: 200, borderRadius: 100 }} resizeMode='contain'></Image>
-
-                    <Text style={{ fontWeight: 'bold', fontSize: 18 }}>Olá Gabs!</Text>
-
+                <ScrollView contentContainerStyle={styles.container} keyboardShouldPersistTaps='handled' showsVerticalScrollIndicator={false}  >
 
                     <View style={styles.navigation}>
                         <TouchableOpacity onPress={() => navigation.navigate('Produtos')} style={styles.button}>
-                            <Foundation name='list-bullet'></Foundation>
+                            <Foundation name='list-bullet' size={28} color="white" />
                             <Text style={{ color: 'white', fontSize: 18 }}>Produtos</Text>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => navigation.navigate('Contatos')} style={styles.button}>
-                            <MaterialIcons name="contact-page" size={24} color="black" />
+                            <MaterialIcons name="contact-page" size={28} color="white" />
                             <Text style={{ color: 'white', fontSize: 18 }}>Contatos</Text>
                         </TouchableOpacity>
                     </View>
                 </ScrollView>
-
-
             </KeyboardAvoidingView>
         </SafeAreaView>
     );
@@ -51,40 +44,50 @@ export default function Home() {
 const styles = StyleSheet.create({
     container: {
         flexGrow: 1,
-        backgroundColor: '#fff',
+        backgroundColor: 'transparent',
         alignItems: 'center',
         justifyContent: 'center',
     },
-    header: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        padding: 10,
+    safeArea: {
+        flex: 1,
+        backgroundColor: '#a9ebf7fd',
     },
-    imagem: {
-        width: 50,
-        height: 50,
-        marginRight: 10,
+    header: {
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 10,
+
     },
     textoHeader: {
         fontSize: 24,
         fontWeight: 'bold',
     },
     button: {
-        backgroundColor: '#1538ff',
-        width: '40%',
-        height: 48,
+        backgroundColor: '#091272',
+        width: '80%',
+        height: 55,
         borderRadius: 10,
-        marginTop: 20,
+        marginTop: 10,
         alignItems: 'center',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         flexDirection: 'row',
-
+        gap: 10
     },
     navigation: {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center'
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: 10,
+        width: '90%'
+    },
+    aboutTitle: {
+        fontWeight: 'bold',
+        fontSize: 24
+    },
+    aboutText: {
+        width: '90%',
+        fontSize: 16
     }
 
 },
